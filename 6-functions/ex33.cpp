@@ -12,7 +12,7 @@ void print_v(vector<T> v)
   if (v.size() > 1)
   {
     cout << " ";
-    vector<T> sub_v (v.begin() + 1, v.end());
+    vector<T> sub_v(v.begin() + 1, v.end());
     print_v(sub_v);
   }
 }
