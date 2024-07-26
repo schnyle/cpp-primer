@@ -1,25 +1,8 @@
 #include <iostream>
 #include <string>
 
-using std::cout;
-
-typedef std::string T;
-T initVal();
-class Ex
+class Sales_data
 {
 public:
-  typedef double T;
-  T setVal(T);
-  T initVal();
-private:
-  int val;
+  Sales_data(std::istream &is = std::cin) {}
 };
-T Ex::setVal(T param)
-{
-  val = param + initVal();
-  return val;
-}
-
-int main()
-{
-}
