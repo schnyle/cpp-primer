@@ -1,0 +1,6 @@
+{isbn: book1, sold: 5, revenue: 6.7}
+{isbn: book2, sold: 46, revenue: 0.79}
+{isbn: book3, sold: 1, revenue: 500}
+{isbn: book1, sold: 5, revenue: 6.7}
+{isbn: book2, sold: 46, revenue: 0.79}
+{isbn: book3, sold: 1, revenue: 500}
