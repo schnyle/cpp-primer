@@ -1,9 +1,17 @@
-// Use count_if to rewrite the portion of our program that counted how many
-// words are greather than length 6.
+// In the exercises for S10.3.2 you wrote a version of biggies that uses
+// partition. Rewrite that function to use check_size and bind.
 
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <functional>
+
+using namespace std::placeholders;
+
+bool check_size(const std::string &s, std::string::size_type sz)
+{
+  return s.size() < sz;
+}
 
 void biggies(std::vector<std::string> &words, std::vector<std::string>::size_type sz)
 {
@@ -16,13 +24,13 @@ void biggies(std::vector<std::string> &words, std::vector<std::string>::size_typ
   std::stable_sort(words.begin(), words.end(), [](const std::string &s1, const std::string &s2)
                    { return s1.size() < s2.size(); });
 
+  // auto check_size_s = std::bind(check_size, s, _1);
+
   // get an iterator to the first element whose size() is >= sz
-  auto iter = std::stable_partition(words.begin(), words.end(), [sz](const std::string &s)
-                                    { return s.size() < sz; });
+  auto iter = std::stable_partition(words.begin(), words.end(), std::bind(check_size, _1, sz));
 
   // compute the number of elements with size >= sz
-  auto numBigWords = std::count_if(words.cbegin(), words.cend(), [sz](const std::string &s)
-                                   { return s.size() >= sz; });
+  auto numBigWords = std::distance(iter, words.end());
   std::cout << "num big words: " << numBigWords << "\n";
 
   // print words of the given size or longer, each one followed by a space

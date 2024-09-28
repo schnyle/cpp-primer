@@ -1,5 +1,5 @@
-// Use count_if to rewrite the portion of our program that counted how many
-// words are greather than length 6.
+// Rewrite the previous exercise to use stable_partition, which like stable_sort
+// maintains the original element order in the partitioned sequence.
 
 #include <iostream>
 #include <vector>
@@ -21,8 +21,7 @@ void biggies(std::vector<std::string> &words, std::vector<std::string>::size_typ
                                     { return s.size() < sz; });
 
   // compute the number of elements with size >= sz
-  auto numBigWords = std::count_if(words.cbegin(), words.cend(), [sz](const std::string &s)
-                                   { return s.size() >= sz; });
+  auto numBigWords = std::distance(iter, words.end());
   std::cout << "num big words: " << numBigWords << "\n";
 
   // print words of the given size or longer, each one followed by a space
