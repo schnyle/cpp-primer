@@ -5,20 +5,22 @@
 #include <string>
 #include <vector>
 
+#include "StrBlob.hpp"
+
 class QueryResult
 {
   friend std::ostream &print(std::ostream &, const QueryResult &);
 
 public:
   using LineNum = std::vector<std::string>::size_type;
-  QueryResult(std::string s, std::shared_ptr<std::vector<std::string>> ls,
+  QueryResult(std::string s, StrBlob fb,
               std::shared_ptr<std::set<LineNum>> ln)
-      : word(s), fileBlob(ls), lineNums(ln)
+      : word(s), fileBlob(fb), lineNums(ln)
   {
   }
 
 private:
   std::string word;
-  std::shared_ptr<std::vector<std::string>> fileBlob;
+  StrBlob fileBlob;
   std::shared_ptr<std::set<LineNum>> lineNums;
 };

@@ -28,7 +28,7 @@ public:
   std::string print(const std::string &word);
 
 private:
-  std::shared_ptr<Lines> lines;
+  std::shared_ptr<Lines> fileBlob;
   std::shared_ptr<WordLines> wordLines;
 };
 
@@ -56,7 +56,7 @@ private:
 };
 
 QueryResult::QueryResult(TextQuery &tq)
-    : lines(tq.lines), wordLines(tq.wordLines)
+    : fileBlob(tq.lines), wordLines(tq.wordLines)
 {
 }
 
@@ -66,7 +66,7 @@ std::string QueryResult::print(const std::string &word)
   ss << word << " occurs " << (*wordLines)[word].size() << " times\n";
   for (auto &i : (*wordLines)[word])
   {
-    ss << "\t(line " << i + 1 << ") " << (*lines)[i] << "\n";
+    ss << "\t(line " << i + 1 << ") " << (*fileBlob)[i] << "\n";
   }
 
   return ss.str();

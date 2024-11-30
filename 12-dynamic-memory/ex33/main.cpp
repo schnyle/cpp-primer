@@ -40,9 +40,39 @@ void runQueries(std::ifstream &infile)
   }
 }
 
+void testBeginEndMethods(std::ifstream &infile) {
+  TextQuery tq(infile);
+  auto qr = tq.query("#include");
+
+  std::cout << "begin()/end() test:\n";
+  auto beginIt = qr.begin();
+  while (beginIt != qr.end())
+  {
+    std::cout << "\tline: " << 1 + *beginIt++ << "\n";
+  }
+  std::cout << "\n";
+}
+
+void testGetFile(std::ifstream &infile)
+{
+  TextQuery tq(infile);
+  auto qr = tq.query("#include");
+
+  std::cout << "get_file() test:\n";
+  auto file = qr.get_file();
+  for (int i = 0; i < file->size(); ++i)
+  {
+    std::cout << "\t" << file->at(i) << "\n";
+  }
+}
+
 int main()
 {
   const std::string file = "main.cpp";
   std::ifstream inputFile(file);
-  runQueries(inputFile);
+  // runQueries(inputFile)
+
+  // testBeginEndMethods(inputFile);
+  
+  testGetFile(inputFile);
 }

@@ -6,6 +6,8 @@
 
 #include "QueryResult.hpp"
 #include "TextQuery.hpp"
+#include "StrBlob.hpp"
+#include "StrBlobPtr.hpp"
 
 std::ostream &print(std::ostream &os, const QueryResult &qr)
 {
@@ -14,7 +16,8 @@ std::ostream &print(std::ostream &os, const QueryResult &qr)
      << (plural ? "s\n" : "\n");
   for (auto lineNum : *qr.lineNums)
   {
-    os << "\t(line " << lineNum + 1 << ") " << *(qr.fileBlob->begin() + lineNum)
+    auto it = qr.fileBlob.begin();
+    os << "\t(line " << lineNum + 1 << ") " << it.incr(lineNum).deref()
        << "\n";
   }
   return os;
