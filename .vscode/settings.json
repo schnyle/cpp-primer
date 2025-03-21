@@ -55,6 +55,19 @@
     "ctime": "cpp",
     "forward_list": "cpp",
     "set": "cpp",
-    "iomanip": "cpp"
+    "iomanip": "cpp",
+    "hash_map": "cpp",
+    "charconv": "cpp",
+    "chrono": "cpp",
+    "ratio": "cpp",
+    "format": "cpp",
+    "semaphore": "cpp",
+    "span": "cpp",
+    "stdfloat": "cpp",
+    "stop_token": "cpp",
+    "text_encoding": "cpp",
+    "thread": "cpp",
+    "cinttypes": "cpp",
+    "variant": "cpp"
   }
 }
