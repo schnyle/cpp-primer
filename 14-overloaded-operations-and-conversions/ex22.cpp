@@ -1,5 +1,5 @@
-// Define a verison of the assignment operator that can assign a string
-// reperesenting an ISBN to a Sales_data.
+// Which other arithmetic operators, if any, do you think Sales_data ought to
+// support? Define any you think the class should include.
 
 #include <iostream>
 #include <sstream>
@@ -25,7 +25,6 @@ public:
   std::string isbn() const { return bookNo; }
   double avg_price() const;
 
-  Sales_data &operator=(const std::string &);
   Sales_data &operator+=(const Sales_data &);
   Sales_data &operator-=(const Sales_data &);
   Sales_data &operator*=(const int);
@@ -68,12 +67,6 @@ std::istream &operator>>(std::istream &is, Sales_data &sd)
     sd = Sales_data();
   }
   return is;
-}
-
-Sales_data &Sales_data::operator=(const std::string &isbn)
-{
-  bookNo = isbn;
-  return *this;
 }
 
 Sales_data &Sales_data::operator+=(const Sales_data &sd)
@@ -134,7 +127,24 @@ Sales_data operator*(const int mult, const Sales_data &sd) { return sd * mult; }
 
 int main()
 {
-  Sales_data sd;
-  sd = "my_isbn";
-  std::cout << sd << "\n";
+  std::string input1 = "0-201 10 24.95";
+  std::string input2 = "0-201 5 9.99";
+
+  std::stringstream ss1(input1);
+  Sales_data sd1;
+  ss1 >> sd1;
+
+  std::stringstream ss2(input2);
+  Sales_data sd2;
+  ss2 >> sd2;
+
+  std::cout << "sd1: " << sd1 << "\nsd2: " << sd2 << "\n";
+  std::cout << "sd1 + sd2: " << sd1 + sd2 << "\n";
+  sd1 += sd2;
+  std::cout << "sd1 += sd2: " << sd1 << "\n";
+  std::cout << "sd1: " << sd1 << "\nsd2: " << sd2 << "\n";
+  std::cout << "sd1 * 3: " << sd1 * 3 << "\n";
+  sd1 *= 3;
+  std::cout << "sd1 *= 3: " << sd1 << "\n";
+  std::cout << "sd1: " << sd1 << "\nsd2: " << sd2 << "\n";
 }
