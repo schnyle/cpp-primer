@@ -1,5 +1,4 @@
-// Add a virtual debug function to your Quote class hierarchy that displays the
-// data members of the respective classes.
+// Define your own versions of Disc_quote and Bulk_quote/
 
 #include <iostream>
 #include <string>
@@ -27,17 +26,34 @@ protected:
   double price = 0.0;
 };
 
-class Bulk_quote : public Quote
+class Disc_quote : public Quote
+{
+public:
+  Disc_quote() = default;
+  Disc_quote(const std::string &bn, const double p, const size_t q,
+             const double d)
+      : Quote(bn, p), qty(q), discount(d)
+  {
+  }
+
+  double net_price(size_t n) const = 0;
+
+protected:
+  size_t qty;
+  double discount;
+};
+
+class Bulk_quote : public Disc_quote
 {
 public:
   Bulk_quote() = default;
   Bulk_quote(const std::string &bn, const double p, const size_t mq,
              const double d)
-      : Quote(bn, p), min_qty(mq), discount(d) {};
+      : Disc_quote(bn, p, mq, d) {};
 
   double net_price(size_t n) const override
   {
-    if (n >= min_qty)
+    if (n >= qty)
     {
       return n * price * (1 - discount);
     }
@@ -46,16 +62,13 @@ public:
       return n * price;
     };
   }
+
   std::ostream &debug(std::ostream &os) const override
   {
-    os << "bookNo: " << isbn() << ", price: " << price
-       << ", min_qty: " << min_qty << ", discount: " << discount;
+    os << "bookNo: " << isbn() << ", price: " << price << ", min_qty: " << qty
+       << ", discount: " << discount;
     return os;
   }
-
-private:
-  size_t min_qty = 0;
-  double discount = 0.0;
 };
 
 class Limited_quote : public Quote
