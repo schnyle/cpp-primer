@@ -1,4 +1,4 @@
-// Define your own versions of Disc_quote and Bulk_quote/
+// Define your own versions of Disc_quote and Bulk_quote
 
 #include <iostream>
 #include <string>
