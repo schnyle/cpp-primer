@@ -8,7 +8,8 @@ struct Sales_data
 {
 };
 
-template <typename T> int compare(const T &a, const T &b)
+template <typename Container>
+int compare(const Container &a, const Container &b)
 {
   if (a < b)
   {

@@ -8,8 +8,8 @@
 #include <string>
 #include <vector>
 
-template <typename InputIt, typename T>
-InputIt find(InputIt first, InputIt last, T value)
+template <typename InputIt, typename Container>
+InputIt find(InputIt first, InputIt last, Container value)
 {
   while (first != last)
   {

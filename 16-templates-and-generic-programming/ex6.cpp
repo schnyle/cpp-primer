@@ -3,6 +3,12 @@
 
 #include <cstddef>
 
-template <typename T, size_t N> T *begin(T (&arr)[N]) { return arr; }
+template <typename Container, size_t N> Container *begin(Container (&arr)[N])
+{
+  return arr;
+}
 
-template <typename T, size_t N> T *end(T (&arr)[N]) { return arr + N; }
+template <typename Container, size_t N> Container *end(Container (&arr)[N])
+{
+  return arr + N;
+}

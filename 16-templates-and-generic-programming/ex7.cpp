@@ -2,7 +2,10 @@
 
 #include <iostream>
 
-template <typename T, size_t N> size_t size(const T (&arr)[N]) { return N; }
+template <typename Container, size_t N> size_t size(const Container (&arr)[N])
+{
+  return N;
+}
 
 int main()
 {

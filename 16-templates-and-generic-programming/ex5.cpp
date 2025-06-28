@@ -11,7 +11,7 @@
 
 #include <iostream>
 
-template <typename T, size_t N> void print(const T (&arr)[N])
+template <typename Container, size_t N> void print(const Container (&arr)[N])
 {
   for (size_t i = 0; i != N; ++i)
   {
