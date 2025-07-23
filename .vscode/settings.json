@@ -68,6 +68,14 @@
     "text_encoding": "cpp",
     "thread": "cpp",
     "cinttypes": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "any": "cpp",
+    "bitset": "cpp",
+    "codecvt": "cpp",
+    "condition_variable": "cpp",
+    "unordered_set": "cpp",
+    "mutex": "cpp",
+    "queue": "cpp",
+    "valarray": "cpp"
   }
 }
